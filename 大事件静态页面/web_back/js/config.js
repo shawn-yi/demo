@@ -9,30 +9,31 @@ var user = {
     },
     logout: function (options) {
         $.ajax({
-            type : 'post',
-            url : baseurl.LOGIN_OUT,
-            success : options.callback
+            type: 'post',
+            url: baseurl.LOGIN_OUT,
+            success: options.callback
         });
     },
-    getuser : function (options) {
+    getInfo: function (options) {
         $.ajax({
-            type : 'get',
-            url : baseurl.GET_USER,
-            success : options.callback
+            url: baseurl.GET_USER,
+            success: options.callback
         });
     },
-    getinfo : function (options) {
+    getAllInfo: function (options) {
         $.ajax({
-            type : 'get',
-            url : baseurl.GET_USER,
-            success : options.callback
+            url: baseurl.GET_ALL_USER,
+            success: options.callback
         });
     },
-    changeuser : function (options) {
+    edit: function (options) {
         $.ajax({
-            type : 'post',
-            url : baseurl.CHANGE_USER,
-            success : options.callback
+            type: 'post',
+            url: baseurl.CHANGE_USER,
+            data: options.data, // 获取options中的数据
+            contentType: false,
+            processData: false,
+            success: options.callback // 获取options中的回调函数
         });
     }
 };

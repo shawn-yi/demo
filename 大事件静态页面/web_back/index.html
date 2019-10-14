@@ -152,12 +152,13 @@
         });
 
         // 简单信息展示功能
-        user.getuser({
+        user.getInfo({
             callback : function (res) {
                 if (res.code === 200) {
+
                     var data = res.data;
-                    $('user_info img').prop('src' , data.user_pic).next().text(data.nickname);
-                    $('user_center_link img').prop('src' , data.user_pic);
+                    $('.user_info img').prop('src' , data.user_pic).next().text(data.nickname);
+                    $('.user_center_link img').prop('src' , data.user_pic);
                 }
             }
         });

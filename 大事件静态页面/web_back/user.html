@@ -20,81 +20,87 @@
 <body>
     <div class="container-fluid">
         <div class="common_title">
-            用户信息修改
+          用户信息修改
         </div>
         <div class="container-fluid common_con">
-            <form class="form-horizontal article_form">
-                <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">用户名称：</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="username" value="李思思" name="username">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="nickname" class="col-sm-2 control-label">昵称：</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nickname" value="思思" name="nickname">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-2 control-label">邮箱：</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="email" value="lisisi@126.com" name="email">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="user_pic" class="col-sm-2 control-label">用户图标：</label>
-                    <div class="col-sm-10">
-                        <img src="images/2.jpg" alt="" class="user_pic" id="avatar">
-                        <input type="file" id="user_pic" name="user_pic">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="col-sm-2 control-label">密码：</label>
-                    <div class="col-sm-4">
-                        <input type="password" class="form-control" id="password" value="12345678" name="password">
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <!-- <button type="submit" class="btn btn-success">修改</button> -->
-                        <button type="button" class="btn btn-success" id="submit">修改</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- 进行退出确认的模态框Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">提示信息!~</h4>
-                </div>
-                <div class="modal-body">
-                    请完整填写表单！~
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
-                    <!-- <button type="button" class="btn btn-primary" id="logoutYes">确认退出</button> -->
-                </div>
+          <form class="form-horizontal article_form">
+            <div class="form-group">
+              <label for="username" class="col-sm-2 control-label">用户名称：</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="username" name="username" value="李思思">
+              </div>
             </div>
+            <div class="form-group">
+              <label for="nickname" class="col-sm-2 control-label">昵称：</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="nickname" name="nickname" value="思思">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-sm-2 control-label">邮箱：</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="email" name="email" value="lisisi@126.com">
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="user_pic" class="col-sm-2 control-label">用户图标：</label>
+              <div class="col-sm-10">
+                <!-- 给img单独设置一个id avatar-->
+                <img src="images/2.jpg" alt="" class="user_pic" id="avatar">
+                <!-- label的for和input[type=file]的id进行关联 -->
+                <input type="file" id="user_pic" name="user_pic">
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <label for="password" class="col-sm-2 control-label">密码：</label>
+              <div class="col-sm-4">
+                <input type="password" class="form-control" id="password" name="password" value="12345678">
+              </div>
+            </div>
+    
+    
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <!-- <button type="submit" class="btn btn-success">修改</button> -->
+                <button type="button" class="btn btn-success" id="submit">修改</button>
+    
+              </div>
+            </div>
+          </form>
         </div>
-    </div>
+      </div>
+    
+      <!-- 进行退出确认的模态框Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">提示信息!~</h4>
+            </div>
+            <div class="modal-body">
+              请完整填写表单！~
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+              <!-- <button type="button" class="btn btn-primary" id="logoutYes">确认退出</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
 
     <script>
         // 获取用户信息
-        user.getinfo({
+        user.getAllInfo({
             callback: function (res) {
                 if (res.code === 200) {
+                    
                     var data = res.data;
                     $.each(data, function (k, value) {
+                        
                         if (k !== 'user_pic') {
                             $('#' + k).val(value);
                         } else {
@@ -118,9 +124,9 @@
                 $('#myModal').modal('show');
                 return;
             }
-            user.changeuser({
+            user.edit({
                 data: fd,
-                callback: function (res) {
+                callback: function (res) {            
                     if (res.code === 200) {
                         parent.location.href = './login.html';
                     }
@@ -129,6 +135,7 @@
         });
 
         $('#user_pic').on('change', function () {
+            alert(1)
             // 获取文件域中的文件信息
             var tempFile = this.files[0];
             // 生成临时图片地址
