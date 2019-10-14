@@ -8,6 +8,17 @@ var user = {
         });
     },
     logout: function (options) {
-
-    }
+        $.ajax({
+            type : 'post',
+            url : baseurl.LOGIN_OUT,
+            success : options.callback
+        });
+    },
+    getuser : function (options) {
+        $.ajax({
+            type : 'get',
+            url : baseurl.GET_USER,
+            success : options.callback
+        });
+    },
 };
