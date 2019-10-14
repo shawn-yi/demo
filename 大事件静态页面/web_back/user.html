@@ -119,13 +119,22 @@
                 return;
             }
             user.changeuser({
-                data : fd,
-                callback : function (res) {
+                data: fd,
+                callback: function (res) {
                     if (res.code === 200) {
                         parent.location.href = './login.html';
                     }
                 }
             });
+        });
+
+        $('#user_pic').on('change', function () {
+            // 获取文件域中的文件信息
+            var tempFile = this.files[0];
+            // 生成临时图片地址
+            var tempSrc = URL.createObjectURL(tempFile);
+            // 将临时图片地址设置给#avatar
+            $('#avatar').prop('src', tempSrc);
         });
     </script>
 
