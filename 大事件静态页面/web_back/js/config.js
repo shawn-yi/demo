@@ -21,4 +21,18 @@ var user = {
             success : options.callback
         });
     },
+    getinfo : function (options) {
+        $.ajax({
+            type : 'get',
+            url : baseurl.GET_USER,
+            success : options.callback
+        });
+    },
+    changeuser : function (options) {
+        $.ajax({
+            type : 'post',
+            url : baseurl.CHANGE_USER,
+            success : options.callback
+        });
+    }
 };
