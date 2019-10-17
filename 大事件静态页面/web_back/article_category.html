@@ -111,7 +111,7 @@
         </div>
     </div>
 
-    <!-- <script>
+    <script>
         $('#addModal').modal({
             show: false,
             backdrop: false
@@ -133,7 +133,7 @@
                 $('#addModal').modal('show');
             }
         })      
-    </script> -->
+    </script>
     <script type="text/html" id="category">
         {{each data v}}
         <tr>
@@ -184,7 +184,58 @@
             var id = $(this).data('id');
             $('#modal_edit').data('id', id);
             var $tds = $(this).parents('tr').children();
-            $('#')
+            $('#cate_name').val($tds.eq(0).text());
+            $('#cate_slug').val($tds.eq(1).text());
+
+            $('#addModal').modal('show');
+            $('#modal_add').hide();
+            $('#modal_edit').show();
+        });
+
+        $('#addBtn').on('click', function () {
+            $('#modal_add').show();
+            $('#modal_edit').hide();
+        });
+        $('#modal_edit').on('click', function () {
+            var id = $(this).data('id');
+            var name = $('#cate_name').val();
+            var slug = $('#cate_slug').val();
+            if (name.trim() === '' || slug.trim() === '') {
+                alert('请完整填写表单');
+                return;
+            }
+            article.changeCate({
+                data: {
+                    id: id,
+                    name: name,
+                    slug: slug
+                },
+                callback : function (res) {
+                    if (res.code === 200) {
+                        location.reload();
+                    } else {
+                        alert('name和slug不能重复，请检测后输入!~');
+                    }
+                }
+            });
+        });
+        // 文章分类删除功能
+        $('#tbody').on('click' , '.del' , function () {
+            if (!confirm('是否确定删除呢？')) {
+                return;
+            }
+            var $tr = $(this).parents('tr');
+            var id = $(this).data('id');
+            article.delCate({
+                data : {
+                    id : id
+                },
+                callback : function (res) {
+                    if (res.code === 200) {
+                        $tr.remove();
+                    }
+                }
+            });
         });
     </script>
 

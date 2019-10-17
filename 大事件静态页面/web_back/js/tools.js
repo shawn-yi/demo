@@ -11,5 +11,6 @@ var baseurl = {
     GET_CATE : 'http://localhost:8000/admin/category_search',
     ADD_CATE : 'http://localhost:8000/admin/category_add',
     CHANGE_CATE : 'http://localhost:8000/admin/category_edit',
+    DEL_CATE : 'http://localhost:8000/admin/category_delete',
     
 };

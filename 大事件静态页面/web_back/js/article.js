@@ -22,4 +22,12 @@ var article = {
             success : options.callback
         });
     },
+    delCate : function (options) {
+        $.ajax({
+            type : 'post',
+            url : baseurl.DEL_CATE,
+            data : options.data,
+            success : options.callback
+        });
+    }
 }
